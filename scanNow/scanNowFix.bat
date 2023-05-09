@@ -7,7 +7,6 @@ echo wscript.echo right (100 + day (d),2) & right (100 + month (d),2) & year (d)
 rem yyyymmdd
 :: echo wscript.echo year (d) * 10000 + month (d) * 100 + day (d) >> yesterday.vbs
 
-
 rem store yesterdays date in variable yesterday
 for /f %%a in ('cscript //nologo yesterday.vbs') do set yesterday=%%a
 
