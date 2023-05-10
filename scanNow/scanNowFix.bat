@@ -13,13 +13,13 @@ for /f %%a in ('cscript //nologo yesterday.vbs') do set yesterday=%%a
 rem create the reg file
 echo Windows Registry Editor Version 5.00 > update.reg
 rem insert key between [], appends to update.reg
-echo [] >> update.reg
+echo [HKEY_CURRENT_USER\Software\VB and VBA Program Settings\Locus\DMEmail\] >> update.reg
 rem insert value to be updated between ""
-echo ""="%yesterday%" >> update.reg
+echo "InBoxLastProcessedDate"="%yesterday%" >> update.reg
 rem insert key between [], appends to update.reg
-echo [] >> update.reg
+echo [HKEY_CURRENT_USER\Software\VB and VBA Program Settings\Locus\DMEmail\] >> update.reg
 rem insert value to be updated between ""
-echo ""="%yesterday%" >> update.reg
+echo "SentItemLastProcessedDate"="%yesterday%" >> update.reg
 
 rem update the registry
 reg import update.reg
