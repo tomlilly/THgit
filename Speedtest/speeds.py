@@ -24,10 +24,10 @@ for line in lines:
         isp = line.split('ISP:')[1].strip()
         isps.append(isp)
     elif 'Download:' in line:
-        download = re.search(r'\d+\.\d+', line).group()
+        download = float(re.search(r'\d+\.\d+', line).group())
         downloads.append(download)
     elif 'Upload:' in line:
-        upload = re.search(r'\d+\.\d+', line).group()
+        upload = float(re.search(r'\d+\.\d+', line).group())
         uploads.append(upload)
 
 # Create a DataFrame from the lists
