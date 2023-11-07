@@ -3,6 +3,7 @@ import re
 
 # Initialize lists to store data
 dates = []
+times = []
 servers = []
 isps = []
 downloads = []
@@ -16,7 +17,9 @@ with open('speedtest.txt', 'r') as file:
 for line in lines:
     if re.search(r'\d{2}/\d{2}/\d{4}', line):
         date = re.search(r'\d{2}/\d{2}/\d{4}', line).group()
+        time = re.search(r'\d{2}:\d{2}:\d{2}', line).group()
         dates.append(date)
+        times.append(time)
     elif 'Server:' in line:
         server = line.split('Server:')[1].strip()
         servers.append(server)
@@ -33,6 +36,7 @@ for line in lines:
 # Create a DataFrame from the lists
 df = pd.DataFrame({
     'Date': dates,
+    'Time': times,
     'Server': servers,
     'ISP': isps,
     'Download': downloads,
