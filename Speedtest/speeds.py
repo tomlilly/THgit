@@ -18,8 +18,11 @@ for line in lines:
     if re.search(r'\d{2}/\d{2}/\d{4}', line):
         date = re.search(r'\d{2}/\d{2}/\d{4}', line).group()
         time = re.search(r'\d{2}:\d{2}:\d{2}', line).group()
-        dates.append(date)
-        times.append(time)
+        if date_search is not None and time_search is not None:
+            date = date_search.group()
+            time = time_search.group()
+            dates.append(date)
+            times.append(time)
     elif 'Server:' in line:
         server = line.split('Server:')[1].strip()
         servers.append(server)
